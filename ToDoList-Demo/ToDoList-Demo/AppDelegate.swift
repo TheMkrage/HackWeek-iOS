@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         UINavigationBar.appearance().tintColor = UIColor.clear
         UINavigationBar.appearance().setBackgroundImage(UIImage.init(named: "spiral")!.resizableImage(withCapInsets: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0), resizingMode: .stretch), for: .default)
