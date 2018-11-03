@@ -22,14 +22,16 @@ class ToDoViewController: UIViewController {
         // makes the top bar look better! (don't worry about this)
         let navigationBar = navigationController!.navigationBar
         navigationBar.shadowImage = UIImage()
-        // TODO: Assign table's delegate and datasource
+
+        self.table.delegate = self
+        self.table.dataSource = self
     }
     
     // Ran when users saves their new Item
     func makeNewItem(name: String) {
-        // TODO: Make an item with the given name
-        // TODO: Add it to our array of items which represent the table
-        // TODO: Reload the table to see the newly added item!
+        let item = Item(name: name)
+        self.items.append(item)
+        self.table.reloadData()
     }
     
     // HANDLE USER INTERACTION: Nothing to do here!
@@ -63,8 +65,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Ran by the table when it needs to know how many rows to have
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: Replace this with the number of expected rows
-        return 0
+        // TODONE: Replace this with the number of expected rows
+        return self.items.count
     }
     
     // Ran by the table when it needs a cell for a given row (indexPath)
@@ -82,7 +84,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.textAlignment = .center
         
         // TODO: Connect the cell's textLabel to our item
-        cell.textLabel?.text = "Test!"
+        cell.textLabel?.text = item.name
         
         // if item is marked, add in the strike image
         if item.isMarked {
@@ -101,7 +103,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         let row = indexPath.row
         let item = self.items[indexPath.row]
         
-        // TODO: toggle the item's "isMarked" property
+        item.isMarked = !item.isMarked
         
         // reload to see the updated changes
         self.table.reloadData()
